@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neurolab Publications</title>
+
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="assets/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+      </div>
+
+      <h1>
+        Publications <span style="font-size: 0.6em">by</span>
+        <img
+          src="/pics/logo-dark.svg"
+          alt="lab logo"
+          id="logo-image"
+          style="height: 60px; vertical-align: bottom; margin-right: 10px"
+        />
+        <a href="index.html">Neurolab</a>
+      </h1>
+      <p class="subtitle">
+        Science is the belief in the ignorance of experts - Richard Feynman
+      </p>
+    </header>
+
+    <main class="detailed-content">
+      <section id="pub">
+        <!-- here the id is useless -->
+        <p id="demo">
+          <!-- id="demo" is defined in new_pubmed.js-->
+          <!-- The publications will be dynamically inserted here -->
+        </p>
+        <script src="assets/pubmed2025.js"></script>
+      </section>
+    </main>
+    <!-- JavaScript for theme switching -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleSwitch = document.querySelector(
+          '.theme-switch input[type="checkbox"]'
+        );
+
+        // MODIFICATION 2: Find the logo image element
+        const logoImage = document.getElementById("logo-image");
+
+        function setTheme(theme) {
+          if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            toggleSwitch.checked = true;
+            // Change the logo to the light version for dark backgrounds
+            if (logoImage) logoImage.src = "pics/logo-light.svg";
+          } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            toggleSwitch.checked = false;
+            // Change the logo to the dark version for light backgrounds
+            if (logoImage) logoImage.src = "pics/logo-dark.svg";
+          }
+        }
+        function switchTheme(e) {
+          const newTheme = e.target.checked ? "dark" : "light";
+          setTheme(newTheme);
+          localStorage.setItem("theme", newTheme);
+        }
+        toggleSwitch.addEventListener("change", switchTheme, false);
+        const savedTheme = localStorage.getItem("theme");
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedTheme) {
+          setTheme(savedTheme);
+        } else {
+          setTheme(systemPrefersDark ? "dark" : "light");
+        }
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (!localStorage.getItem("theme")) {
+              setTheme(e.matches ? "dark" : "light");
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
