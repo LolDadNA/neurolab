@@ -34,6 +34,10 @@
 }
 
 /* --- 2. GENERAL STYLES --- */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Lato", sans-serif;
   background-color: var(--bg-color);
@@ -50,11 +54,42 @@ h3 {
   font-weight: 600;
 }
 
-/* --- 3. HEADER AND LAYOUT --- */
+/* --- NAVIGATION HEADER STYLES --- */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--tag-bg-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--subtitle-color);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--link-color);
+}
+
+.nav-links a.active {
+  color: var(--link-color);
+}
+
+/* --- HEADER AND LAYOUT --- */
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
-  position: relative;
 }
 
 .page-header h1 {
@@ -69,17 +104,7 @@ h3 {
   margin: 0 auto;
 }
 
-.page-header .team-link {
-  color: var(--link-color);
-  text-decoration: none;
-  font-weight: 700;
-  align-self: flex-end;
-}
-
-.page-header .team-link:hover {
-  text-decoration: underline;
-}
-/* --- 4. GRID STYLES (FOR BOTH PAGES) --- */
+/* --- GRID STYLES (FOR BOTH PAGES) --- */
 .research-grid,
 .team-grid {
   display: grid;
@@ -96,7 +121,7 @@ h3 {
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* --- 5. CARD STYLES --- */
+/* --- CARD STYLES --- */
 
 /* Research Page Card */
 .project-card {
@@ -185,13 +210,16 @@ h3 {
   box-shadow: var(--card-hover-shadow);
 }
 
+/* --- MODIFIED FOR RESPONSIVENESS --- */
 .team-card img {
-  width: 150px;
-  height: 150px;
+  width: 80%; /* Use a percentage to allow shrinking */
+  max-width: 120px; /* Set a max-width to prevent it getting too big */
+  aspect-ratio: 5/5; /* Use aspect-ratio for a consistent oval shape (width/height) */
   border-radius: 40%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto; /* Use auto margin to center the image */
   border: 3px solid var(--bg-color);
+  display: block;
 }
 
 .team-card .name {
@@ -205,11 +233,10 @@ h3 {
   margin-top: 0.25rem;
 }
 
-/* --- 6. THEME TOGGLE SWITCH --- */
+/* --- THEME TOGGLE SWITCH --- */
 .theme-switch-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
+  display: flex;
+  align-items: center;
 }
 
 .theme-switch {
@@ -266,25 +293,7 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-.detailed-content {
-  background-color: var(--card-bg-color);
-  padding: 2rem 3rem;
-  max-width: 1200px;
-  margin: 0 auto; /* --- center --*/
-  border-radius: 8px;
-}
-.detailed-content section {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--tag-bg-color);
-}
-.detailed-content section:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-/* --- 7. RESPONSIVE DESIGN --- */
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 992px) {
   .research-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -308,13 +317,38 @@ input:checked + .slider:before {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
-  .theme-switch-wrapper {
-    position: static;
-    margin-top: 1.5rem;
-    margin-bottom: -1.5rem;
+  .main-nav {
+    padding: 0.5rem 0;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+  .nav-links a {
+    font-size: 0.9rem;
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* --- FOOTER STYLES --- */
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  border-top: 1px solid var(--tag-bg-color);
+  color: var(--subtitle-color);
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }

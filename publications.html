@@ -16,23 +16,30 @@
     />
   </head>
   <body>
-    <header class="page-header">
+    <!-- NEW, COMPACT NAVIGATION HEADER -->
+    <nav class="main-nav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="publications.html" class="active">Publications</a>
+      </div>
       <div class="theme-switch-wrapper">
         <label class="theme-switch" for="checkbox">
           <input type="checkbox" id="checkbox" />
           <div class="slider round"></div>
         </label>
       </div>
-
+    </nav>
+    <!-- SIMPLIFIED PAGE HEADER -->
+    <header class="page-header">
       <h1>
-        Publications <span style="font-size: 0.6em">by</span>
+        Neurolab
         <img
           src="/pics/logo-dark.svg"
           alt="lab logo"
           id="logo-image"
-          style="height: 60px; vertical-align: bottom; margin-right: 10px"
-        />
-        <a href="index.html">Neurolab</a>
+          style="height: 50px; vertical-align: bottom; margin-right: 10px"
+        />Publications
       </h1>
       <p class="subtitle">
         Science is the belief in the ignorance of experts - Richard Feynman
@@ -96,5 +103,21 @@
           });
       });
     </script>
+    <!-- Add the footer html block here -->
+    <footer>
+      <div class="footer-content">
+        <p>&copy;2025 Zheng lab, Emory University. All Rights Reserved.</p>
+        <p>
+          This website is for informational purposes only and does not
+          constitute medical advice.
+        </p>
+        <a
+          href="https://www.emory.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Emory University Home</a
+        >
+      </div>
+    </footer>
   </body>
 </html>

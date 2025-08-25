@@ -16,25 +16,33 @@
     />
   </head>
   <body>
-    <header class="page-header">
+    <!-- NEW, COMPACT NAVIGATION HEADER -->
+    <nav class="main-nav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="team.html" class="active">Team</a>
+        <a href="publications.html">Publications</a>
+      </div>
       <div class="theme-switch-wrapper">
         <label class="theme-switch" for="checkbox">
           <input type="checkbox" id="checkbox" />
           <div class="slider round"></div>
         </label>
       </div>
-
+    </nav>
+    <!-- SIMPLIFIED PAGE HEADER -->
+    <header class="page-header">
       <h1>
-        Meet
+        Neurolab
         <img
           src="/pics/logo-dark.svg"
           alt="lab logo"
           id="logo-image"
-          style="height: 60px; vertical-align: bottom; margin-right: 10px"
-        /><a href="index.html">Neurolab</a> Team
+          style="height: 50px; vertical-align: bottom; margin-right: 10px"
+        />Team
       </h1>
       <p class="subtitle">
-        Our lab is composed of talented and dedicated researchers from diverse
+        Our team is composed of talented and dedicated researchers from diverse
         scientific backgrounds.
       </p>
     </header>
@@ -52,34 +60,22 @@
         <p class="title">Principal Investigator</p>
       </div>
       <div class="team-card">
-        <img
-          src="pics/Poddar.jpg"
-          alt="Photo of Abhishek Poddar"
-        />
+        <img src="pics/Poddar.jpg" alt="Photo of Abhishek Poddar" />
         <h3 class="name">Dr. Abhishek Poddar</h3>
         <p class="title">Postdoctoral Fellow</p>
       </div>
       <div class="team-card">
-        <img
-          src="pics/Joubert.jpg"
-          alt="Photo of Shuristeen Joubert"
-        />
+        <img src="pics/Joubert.jpg" alt="Photo of Shuristeen Joubert" />
         <h3 class="name">Shuristeen Joubert</h3>
         <p class="title">PhD Candidate</p>
       </div>
       <div class="team-card">
-        <img
-          src="pics/Ghinger.jpg"
-          alt="Photo of Frankie Ghinger"
-        />
+        <img src="pics/Ghinger.jpg" alt="Photo of Frankie Ghinger" />
         <h3 class="name">Frankie Ghinger</h3>
         <p class="title">Research Specialist</p>
       </div>
       <div class="team-card">
-        <img
-          src="pics/Penas.jpg"
-          alt="Photo of Arjolyn Penas"
-        />
+        <img src="pics/Penas.jpg" alt="Photo of Arjolyn Penas" />
         <h3 class="name">Arjolyn Penas</h3>
         <p class="title">Research Specialist</p>
       </div>
@@ -148,5 +144,21 @@
           });
       });
     </script>
+    <!-- Add the footer html block here -->
+    <footer>
+      <div class="footer-content">
+        <p>&copy;2025 Zheng lab, Emory University. All Rights Reserved.</p>
+        <p>
+          This website is for informational purposes only and does not
+          constitute medical advice.
+        </p>
+        <a
+          href="https://www.emory.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Emory University Home</a
+        >
+      </div>
+    </footer>
   </body>
 </html>

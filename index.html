@@ -16,19 +16,24 @@
     />
   </head>
   <body>
+<!-- NEW, COMPACT NAVIGATION HEADER -->
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="team.html">Team</a>
+            <a href="publications.html">Publications</a>
+        </div>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+    </nav>
+    <!-- SIMPLIFIED PAGE HEADER -->
     <header class="page-header">
-      <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div>
-        </label>
-      </div>
-
-      <h1>Neurolab <img src="/pics/logo-dark.svg" alt="lab logo" id="logo-image" style="height: 60px; vertical-align: bottom; margin-right: 10px;"><span style="font-size: 0.6em;">at</span> Emory University</h1>
-      <p class="subtitle">
-        <span style="font-size: 1.1em;">W</span>e are a <a href="team.html" class="team-link">team of motivated individuals</a> dedicated to uncovering the cell biology behind brain development and neurodegeneration. <br>
-        See our <a href="publications.html" class="team-link">publications here</a>
-      </p>
+        <h1>Neurolab <img src="/pics/logo-dark.svg" alt="lab logo" id="logo-image" style="height: 50px; vertical-align: bottom; margin-right: 10px;"><span style="font-size: 0.6em;">at</span> Emory University</h1>
+        <p class="subtitle">Exploring the molecular and cellular mechanisms of brain development and neurodegeneration.</p>
     </header>
 
     <main class="research-grid">
@@ -223,5 +228,13 @@
             });
         });
     </script>
-  </body>
+<!-- Add the footer html block here -->
+ <footer>
+    <div class="footer-content">
+      <p>&copy;2025 Zheng lab, Emory University. All Rights Reserved. </p>
+    <p>This website is for informational purposes only and does not constitute medical advice. </p>
+    <a href="https://www.emory.edu" target="_blank" rel="noopener noreferrer">Emory University Home</a>
+    </div>
+ </footer>
+</body>
 </html>
