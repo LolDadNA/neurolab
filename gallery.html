@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neurolab at Emory University</title>
+
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="assets/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- NEW, COMPACT NAVIGATION HEADER -->
+    <nav class="main-nav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="publications.html">Publications</a>
+        <a href="gallery.html" class="active">Fun</a>
+      </div>
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+      </div>
+    </nav>
+    <!-- SIMPLIFIED PAGE HEADER -->
+    <header class="page-header">
+      <h1>
+        Neurolab
+        <img
+          src="/pics/logo-dark.svg"
+          alt="lab logo"
+          id="logo-image"
+          style="height: 50px; vertical-align: bottom; margin-right: 10px"
+        />
+        Fun
+      </h1>
+      <p class="subtitle">
+        I am among those who think that science has great beauty - Marie
+        Curie,
+      </p>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+      <!-- Photo Grid from your old file -->
+      <div class="gallery-row">
+        <div class="gallery-column">
+          <img src="pics/fun/Sherry-PhD.jpg" alt="Sherry Ye PhD" />
+          <img src="pics/fun/Lab-mountain2021.jpg" alt="team building" />
+          <img src="pics/fun/Joe-Bday.jpg" alt="Joe Behnke birthday" />
+          <img src="pics/fun/Pollitt-best.jpg" alt="NS retreat" />
+          <!-- <img
+            src="pics/fun/Kate-Sherry-SfN.jpg"
+            alt="Kate poster at SfN2022"
+          /> -->
+        </div>
+        <div class="gallery-column">
+          <img src="pics/fun/Sherry-defense.jpg" alt="Sherry Ye defense" />
+          <img src="pics/fun/Zhenglab-emory.jpg" alt="Zheng lab team 2013" />
+          <!-- <img
+            src="pics/fun/Julia-return2022.jpg"
+            alt="Julia Omotade returns 2022"
+          /> -->
+          <img src="pics/fun/jersey-time.jpg" alt="Zheng lab - Jersey years" />
+          <img
+            src="pics/fun/Kate-Sherry-SfN2.jpg"
+            alt="Kate and Sherry at SfN2022"
+          />
+        </div>
+        <div class="gallery-column">
+          <img
+            src="pics/fun/Steen-lifting.jpg"
+            alt="Shuristeen does the lifting"
+          />
+          <img src="pics/fun/Emory-fun.jpg" alt="Zheng lab - Emory years" />
+          <img src="pics/fun/Julia-amanda-me.jpg" alt="BCDB retreat 2011" />
+          <!-- <img src="pics/fun/J-Z.jpg" alt="James being cool" /> -->
+          <img src="pics/fun/Ken-James-scope.jpg" alt="Ken at 2P scope" />
+        </div>
+        <div class="gallery-column">
+          <img src="pics/fun/Ken-vs-James.jpg" alt="Orange county" />
+          <img src="pics/fun/Kate-Hardin working.jpg" alt="Kate at the scope" />
+          <!--<img
+            src="pics/fun/Bettina-James.jpg"
+            alt="James and Bettina at Chile meeting 2019"
+          /> -->
+          <img
+            src="pics/fun/commence-Julia.jpg"
+            alt="Julia Omotade commencement"
+          />
+          <img
+            src="pics/fun/commence-amanda.jpg"
+            alt="Amanda York Commencement"
+          />
+        </div>
+      </div>
+
+      <!-- Video Section -->
+      <div class="video-section">
+        <div class="video-grid">
+          <div class="video-wrapper">
+            <h3>The dynamics of F-actin network</h3>
+            <video controls>
+              <source src="video/3D-SIM.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-wrapper">
+            <h3>PDF neurons in a Drosophila brain</h3>
+            <video controls>
+              <source src="video/PDF-3D_540p.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-wrapper">
+            <h3>AI-tracked fly climbing after head trauma</h3>
+            <video controls>
+              <source src="video/Flies-tracked.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+      </div>
+    </main>
+    <!-- JavaScript for theme switching -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleSwitch = document.querySelector(
+          '.theme-switch input[type="checkbox"]'
+        );
+
+        // MODIFICATION 2: Find the logo image element
+        const logoImage = document.getElementById("logo-image");
+
+        function setTheme(theme) {
+          if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            toggleSwitch.checked = true;
+            // Change the logo to the light version for dark backgrounds
+            if (logoImage) logoImage.src = "pics/logo-light.svg";
+          } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            toggleSwitch.checked = false;
+            // Change the logo to the dark version for light backgrounds
+            if (logoImage) logoImage.src = "pics/logo-dark.svg";
+          }
+        }
+        function switchTheme(e) {
+          const newTheme = e.target.checked ? "dark" : "light";
+          setTheme(newTheme);
+          localStorage.setItem("theme", newTheme);
+        }
+        toggleSwitch.addEventListener("change", switchTheme, false);
+        const savedTheme = localStorage.getItem("theme");
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedTheme) {
+          setTheme(savedTheme);
+        } else {
+          setTheme(systemPrefersDark ? "dark" : "light");
+        }
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (!localStorage.getItem("theme")) {
+              setTheme(e.matches ? "dark" : "light");
+            }
+          });
+      });
+    </script>
+    
+    <!-- Your standard footer -->
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Zheng Lab, Emory University. All Rights Reserved.</p>
+        <p>
+          This website is for informational purposes only and does not
+          constitute medical advice.
+        </p>
+        <a
+          href="https://www.emory.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Emory University Home</a
+        >
+      </div>
+    </footer>
+
+    <!-- Your standard script -->
+    <script>
+      // ... (The same theme-switcher script from your other pages) ...
+    </script>
+  </body>
+</html>

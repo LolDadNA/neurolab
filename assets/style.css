@@ -35,7 +35,13 @@
 
 /* --- 2. GENERAL STYLES --- */
 html {
+  box-sizing: border-box;
   scroll-behavior: smooth;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
@@ -67,7 +73,7 @@ h3 {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .nav-links a {
@@ -212,8 +218,8 @@ h3 {
 
 /* --- MODIFIED FOR RESPONSIVENESS --- */
 .team-card img {
-  width: 80%; /* Use a percentage to allow shrinking */
-  max-width: 120px; /* Set a max-width to prevent it getting too big */
+  width: 90%; /* Use a percentage to allow shrinking */
+  max-width: 140px; /* Set a max-width to prevent it getting too big */
   aspect-ratio: 5/5; /* Use aspect-ratio for a consistent oval shape (width/height) */
   border-radius: 40%;
   object-fit: cover;
@@ -233,6 +239,13 @@ h3 {
   margin-top: 0.25rem;
 }
 
+.detailed-content {
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  background-color: var(--card-bg-color);
+}
 /* --- THEME TOGGLE SWITCH --- */
 .theme-switch-wrapper {
   display: flex;
@@ -293,6 +306,57 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+/* --- NEW: GALLERY STYLES --- */
+.gallery-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.gallery-column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 4px; /* Added for consistency */
+}
+
+.video-section {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--tag-bg-color);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-wrapper {
+  margin-bottom: 2rem;
+}
+
+.video-wrapper h3 {
+  color: var(--subtitle-color);
+}
+
+.video-wrapper video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 992px) {
   .research-grid {
@@ -325,6 +389,22 @@ input:checked + .slider:before {
   }
   .nav-links a {
     font-size: 0.9rem;
+  }
+  /* Gallery responsive */
+  .gallery-column {
+    flex: 50%;
+    max-width: 50%;
+  }
+  /* Make videos stack on mobile -> one column */
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-column {
+    flex: 100%;
+    max-width: 100%;
   }
 }
 
