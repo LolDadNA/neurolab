@@ -244,6 +244,8 @@ h3 {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 2rem;
+  max-width: 1200px;  /* Same width as the other parts */
+  margin: 0 auto; /* This will place the content in the center */
   background-color: var(--card-bg-color);
 }
 /* --- THEME TOGGLE SWITCH --- */
