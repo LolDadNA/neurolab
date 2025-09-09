@@ -186,46 +186,62 @@
     </div>
 
     <!-- Simplified JavaScript for theme switching only -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-            
-            // MODIFICATION 2: Find the logo image element
-            const logoImage = document.getElementById('logo-image');
+    <!-- This version will still prioritize a user's manual click, -->
+    <!-- but it will also react if a new visitor changes their OS theme -->
+    <!-- while the page is open.  However, if the user clicks the theme switch -->
+    <!-- the choice will be saved and be sticky -->
 
-            function setTheme(theme) {
-                if (theme === 'dark') {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    toggleSwitch.checked = true;
-                    // Change the logo to the light version for dark backgrounds
-                    if(logoImage) logoImage.src = 'pics/logo-light.svg';
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    toggleSwitch.checked = false;
-                    // Change the logo to the dark version for light backgrounds
-                    if(logoImage) logoImage.src = 'pics/logo-dark.svg';
-                }
-            }
-            function switchTheme(e) {
-                const newTheme = e.target.checked ? 'dark' : 'light';
-                setTheme(newTheme);
-                localStorage.setItem('theme', newTheme);
-            }
-            toggleSwitch.addEventListener('change', switchTheme, false);
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme) {
-                setTheme(savedTheme);
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const logoImage = document.getElementById('logo-image');
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggleSwitch.checked = true;
             } else {
-                setTheme(systemPrefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', 'light');
+                toggleSwitch.checked = false;
             }
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                if (!localStorage.getItem('theme')) {
-                    setTheme(e.matches ? 'dark' : 'light');
-                }
-            });
+            if (logoImage) {
+                logoImage.src = theme === 'dark' ? 'pics/logo-light.svg' : 'pics/logo-dark.svg';
+            }
+        }
+
+        function switchTheme(e) {
+            const newTheme = e.target.checked ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme); // Save the manual choice
+            setTheme(newTheme);
+        }
+
+        // Main logic for setting the initial theme
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme); // Prioritize saved choice
+            } else {
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setTheme(systemPrefersDark ? 'dark' : 'light'); // Use system preference
+            }
+        }
+
+        // Listen for clicks on the toggle
+        toggleSwitch.addEventListener('change', switchTheme);
+
+        // THIS IS THE UPGRADE: Listen for real-time OS theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only apply the change if the user has NOT made a manual choice
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
         });
+
+        // Run the initialization
+        initializeTheme();
+    });
     </script>
+
 <!-- Add the footer html block here -->
  <footer>
     <div class="footer-content">
