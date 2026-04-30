@@ -244,7 +244,7 @@ h3 {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 2rem;
-  max-width: 1200px;  /* Same width as the other parts */
+  max-width: 1200px; /* Same width as the other parts */
   margin: 0 auto; /* This will place the content in the center */
   background-color: var(--card-bg-color);
 }
@@ -433,4 +433,22 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+.footer-links {
+  display: flex; /* Aligns items in a row */
+  justify-content: center; /* Centers them horizontally */
+  margin-top: 1rem; /* Adds space between the text and the links */
+}
+
+.footer-links a {
+  margin: 0 15px; /* Add 15px of space to the left and right of each link */
+}
+
+/* Optional: specific mobile tweak to stack them on very small screens */
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

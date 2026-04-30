@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,7 +15,7 @@
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
-    <title>Neurolab Team</title>
+    <title>NeuroCell Lab at Emory University - our team</title>
 
     <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="assets/style.css" />
@@ -46,13 +46,15 @@
     <!-- SIMPLIFIED PAGE HEADER -->
     <header class="page-header">
       <h1>
-        Neurolab
+        <span style="color: darkred">N</span>euro<span style="color: darkred"
+          >C</span
+        >ell <span style="color: darkred">L</span>ab
         <img
           src="/pics/logo-dark.svg"
           alt="lab logo"
           id="logo-image"
           style="height: 70px; vertical-align: bottom; margin-right: 10px"
-        />Team
+        /><span style="color: cornflowerblue">Team</span>
       </h1>
       <p class="subtitle">
         Our team is composed of talented and dedicated researchers from diverse
@@ -124,6 +126,20 @@
         <h3 class="name">Sung-June Kim</h3>
         <p class="title">Undergraduate Researcher</p>
       </div>
+      <div class="team-card">
+        <img
+          src="pics/WeWantYou.jpg"
+          alt="We are recruiting at all levels.  Please click below to email us"
+        />
+        <h3 class="name">Join the Team</h3>
+        <p class="title">
+          Inquire
+          <a
+            href="mailto:neurolab.zheng@gmail.com?subject=Inquiry%20regarding%20Zheng%20Lab&body=Dear%20Dr.%20Zheng%2C%0D%0A%0D%0AI%20am%20visiting%20your%20website%20and%20interested%20in..."
+            >here</a
+          >
+        </p>
+      </div>
     </main>
 
     <!-- Simplified JavaScript for theme switching only -->
@@ -136,7 +152,7 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const toggleSwitch = document.querySelector(
-          '.theme-switch input[type="checkbox"]'
+          '.theme-switch input[type="checkbox"]',
         );
         const logoImage = document.getElementById("logo-image");
 
@@ -194,12 +210,15 @@
           This website is for informational purposes only and does not
           constitute medical advice.
         </p>
-        <a
-          href="https://www.emory.edu"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Emory University Home</a
-        >
+        <div class="footer-links">
+          <a href="mailto:neurolab.zheng@gmail.com">Contact us</a>
+          <a
+            href="https://www.emory.edu"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Emory University Home</a
+          >
+        </div>
       </div>
     </footer>
   </body>
