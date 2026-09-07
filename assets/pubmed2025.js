@@ -6,8 +6,12 @@ const pubmedSummaryAPI =
 const database = "db=pubmed";
 const returnmode = "&retmode=json";
 const returnmax = "&retmax=1000"; // Increased retmax for a larger initial fetch
-const searchTerm = "&term=James Q Zheng[Author]"; // Simplified search term
-// const searchTerm = "&term=James Q Zheng[Author]"; // You can also try this, but 'Zheng JQ' is often more reliable
+
+const authorQuery = '"Zheng, James Q"[Author]';
+const searchTerm = "&term=" + encodeURIComponent(authorQuery); 
+
+const identity = "&tool=zhenglab-website&email=neurolab.zheng%40gmail.com";
+
 const htmlPublicationTemplate = `%authors% (%date%) '%title%' <i><b>%journal%</b></i>,%volume% %issue%%pages%PMID:<a href="%data%"target="_blank"> %PMID% </a></br></br>`;
 
 // --- Main function to fetch and display publications ---
@@ -18,6 +22,17 @@ async function fetchPubmedRecords() {
     const searchResponse = await fetch(idURL);
     const searchData = await searchResponse.json();
     const idList = searchData.esearchresult.idlist;
+
+   // ADDED: so a future zero-result day is diagnosable from the console
+    // instead of just showing "No publications found".
+    console.info(
+      "[pubmed] query:",
+      authorQuery,
+      "| hits:",
+      searchData.esearchresult.count,
+      "| PubMed read it as:",
+      searchData.esearchresult.querytranslation,
+    );
 
     if (!idList || idList.length === 0) {
       document.getElementById("demo").innerHTML =
