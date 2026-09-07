@@ -1,0 +1,8 @@
+{
+  "_comment": "Placeholder. Replace by running 'node tools/build-pub-cache.mjs', or by loading the live page and running ZhengPubs.downloadCache() in the browser console. An empty publications array is ignored by the site, so this file is harmless as-is.",
+  "generated": "1970-01-01T00:00:00.000Z",
+  "queries": ["\"James Q Zheng\"[Author]"],
+  "pmidsFound": 0,
+  "count": 0,
+  "publications": []
+}
