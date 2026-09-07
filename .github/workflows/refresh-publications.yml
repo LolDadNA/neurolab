@@ -1,0 +1,47 @@
+# Repo : github.com/LolDadNA/neurolab   (branch: main)
+# Path : .github/workflows/refresh-publications.yml   <- must be exactly here.
+#        GitHub ignores workflow files kept anywhere else.
+#
+# Re-runs the PubMed query every Monday and commits an updated
+# assets/publications-cache.json, so the backup snapshot never goes stale.
+# Pushing that commit to main also redeploys your Pages site automatically.
+#
+# Before the first run: Settings -> Actions -> General -> Workflow permissions
+# -> "Read and write permissions" -> Save.
+
+name: Refresh publication cache
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # 06:00 UTC every Monday
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Rebuild cache
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }} # optional
+        run: node assets/build-pub-cache.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- assets/publications-cache.json; then
+            echo "No change."
+          else
+            git add assets/publications-cache.json
+            git commit -m "chore: refresh publication cache"
+            git push
+          fi
