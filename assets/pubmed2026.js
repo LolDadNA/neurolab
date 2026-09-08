@@ -35,6 +35,10 @@
     // Visitors never see this; it is a nudge for you.
     staleAfterDays: 21,
 
+    // Author names to wrap in <span class="pi-name"> so CSS can style them.
+    // Must match PubMed's format exactly (surname + initials, no punctuation).
+    highlightAuthors: ["Zheng JQ"],
+
     // Header bar above the list: [Updated 7 Sep 2026]  [Refresh]
     showHeader: true,
 
@@ -164,12 +168,28 @@
   // --------------------------------------------------------------------
   // Rendering
   // --------------------------------------------------------------------
+  // Splits on the same ", " the author list was joined with, so a name is
+  // matched whole. No regex, so it cannot match inside a different surname.
+  function highlightAuthors(authorString) {
+    if (!CONFIG.highlightAuthors || !CONFIG.highlightAuthors.length) {
+      return authorString;
+    }
+    return authorString
+      .split(", ")
+      .map((name) =>
+        CONFIG.highlightAuthors.indexOf(name) !== -1
+          ? '<span class="pi-name">' + name + "</span>"
+          : name,
+      )
+      .join(", ");
+  }
+
   function renderOne(pub) {
     const year = pub.pubdate ? pub.pubdate.slice(0, 4) : "";
     const inPress = !pub.volume;
 
     const fields = {
-      authors: pub.authors,
+      authors: highlightAuthors(pub.authors),
       date: year,
       title: pub.title,
       journal: pub.journal,
