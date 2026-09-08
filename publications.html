@@ -24,6 +24,24 @@
 
     <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="assets/style.css" />
+
+    <!-- Highlight for the PI's name in the publication list. -->
+    <!-- Applied by assets/pubmed2026.js via <span class="pi-name">. -->
+    <style>
+      /* Light mode (also the fallback if data-theme is ever missing) */
+      :root {
+        --pi-name-color: darkred;
+      }
+      /* Dark mode: darkred is unreadable on a dark background, so lighten it */
+      :root[data-theme="dark"] {
+        --pi-name-color: #ff8a80;
+      }
+
+      .pi-name {
+        color: var(--pi-name-color);
+        font-weight: 700;
+      }
+    </style>
     <!-- added favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
