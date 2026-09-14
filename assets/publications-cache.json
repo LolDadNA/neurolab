@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T19:26:21.903Z",
+  "generated": "2026-09-14T11:53:08.879Z",
   "queries": [
     "\"Zheng, James Q\"[Author]",
     "\"James Q Zheng\"[Author]"
@@ -9,13 +9,13 @@
   "publications": [
     {
       "pmid": "42617739",
-      "title": "Fascin in Dendritic Protrusions is Required for Synaptic Plasticity.",
+      "title": "Fascin in dendritic protrusions is required for synaptic plasticity.",
       "authors": "Zheng JQ, Joubert S, Gonzalez-Islas C, Ogawa Y, Poddar A, Penas AB, Liu E, Wenner P, Myers KR",
       "journal": "J Biol Chem",
       "pubdate": "2026 Aug 19",
       "sortdate": "2026/08/19 00:00",
-      "volume": "",
-      "issue": "",
+      "volume": "302",
+      "issue": "10",
       "pages": "113465"
     },
     {
